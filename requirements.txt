@@ -1,0 +1,5 @@
+matplotlib
+requests
+top2vec
+vllm
+wordcloud
