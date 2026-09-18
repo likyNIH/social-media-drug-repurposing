@@ -5,3 +5,6 @@ __pycache__/
 *.log
 venv/
 .env
+
+# default runtime data dir when SM_DATA_DIR is unset (see README)
+/social_media_data/

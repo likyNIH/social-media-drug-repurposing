@@ -11,9 +11,11 @@ Usage: python snapshot_ranking.py
 
 import csv
 import json
+import os
 from pathlib import Path
 
-DATA_DIR         = Path("/ncats/users/liky/social_media_data")
+DATA_DIR         = Path(os.environ.get(
+    "SM_DATA_DIR", str(Path(__file__).resolve().parent.parent / "social_media_data")))
 PROGRESS_FILE    = DATA_DIR / "disease_ranking_progress.jsonl"
 SNAPSHOT_CSV     = DATA_DIR / "disease_subreddit_ranking_snapshot.csv"
 MIN_SUBSCRIBERS  = 200

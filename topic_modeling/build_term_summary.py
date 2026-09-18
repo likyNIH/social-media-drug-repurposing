@@ -24,13 +24,15 @@ Usage: python build_term_summary.py
 """
 
 import json
+import os
 import re
 from collections import Counter
 from pathlib import Path
 
-DATA_DIR = Path("/ncats/users/liky/social_media_data")
+DATA_DIR = Path(os.environ.get(
+    "SM_DATA_DIR", str(Path(__file__).resolve().parent.parent / "social_media_data")))
 INPUT_JSONL = DATA_DIR / "scraped_docs" / "scleroderma_raw.jsonl"
-OUT_MD = DATA_DIR / "sm_term_summary_v2.md"
+OUT_MD = DATA_DIR / "sm_term_summary.md"
 
 MAX_EXAMPLES = 10
 

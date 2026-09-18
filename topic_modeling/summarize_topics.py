@@ -25,14 +25,17 @@ Usage: python summarize_topics.py
 """
 
 import json
+import os
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraping"))
 import scrape_rare_disease_subreddits as scraper
 
+DATA_DIR = Path(os.environ.get(
+    "SM_DATA_DIR", str(Path(__file__).resolve().parent.parent / "social_media_data")))
 TOPIC_DIR = scraper.OUT_DIR / "topic_models"
-OUT_MD = Path("/ncats/users/liky/social_media_data/topic_summary_full.md")
+OUT_MD = DATA_DIR / "topic_summary_full.md"
 
 CLINICAL_WORDS = {
     "pain", "painful", "fatigue", "tired", "exhausted", "doctor", "specialist",

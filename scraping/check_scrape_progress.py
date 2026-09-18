@@ -12,12 +12,14 @@ Usage: python check_scrape_progress.py
 
 import csv
 import json
+import os
 from datetime import datetime
 from pathlib import Path
 
 import scrape_rare_disease_subreddits as target
 
-DATA_DIR = Path("/ncats/users/liky/social_media_data")
+DATA_DIR = Path(os.environ.get(
+    "SM_DATA_DIR", str(Path(__file__).resolve().parent.parent / "social_media_data")))
 OUT_DIR  = target.OUT_DIR
 V2_CSV   = DATA_DIR / "disease_subreddit_ranking_v2.csv"
 

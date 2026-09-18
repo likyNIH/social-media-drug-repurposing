@@ -19,13 +19,15 @@ Usage: python reclassify_final.py
 
 import csv
 import json
+import os
 import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraping"))
 import rank_disease_subreddits as m
 
-DATA_DIR            = Path("/ncats/users/liky/social_media_data")
+DATA_DIR            = Path(os.environ.get(
+    "SM_DATA_DIR", str(Path(__file__).resolve().parent.parent / "social_media_data")))
 PROGRESS_FILE        = DATA_DIR / "disease_ranking_progress.jsonl"
 DISEASES_CSV         = DATA_DIR / "all_diseases.csv"
 RECLASSIFIED_JSONL   = DATA_DIR / "disease_ranking_reclassified.jsonl"

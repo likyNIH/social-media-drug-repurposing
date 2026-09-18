@@ -15,9 +15,11 @@ Usage: python build_reviewed_shortlist.py
 """
 
 import csv
+import os
 from pathlib import Path
 
-DATA_DIR    = Path("/ncats/users/liky/social_media_data")
+DATA_DIR    = Path(os.environ.get(
+    "SM_DATA_DIR", str(Path(__file__).resolve().parent.parent / "social_media_data")))
 IN_CSV      = DATA_DIR / "disease ranking shortlist.csv"
 OUT_CSV     = DATA_DIR / "disease ranking shortlist_reviewed.csv"
 

@@ -43,6 +43,7 @@ Outputs:
 
 import csv
 import json
+import os
 import time
 import re
 from pathlib import Path
@@ -53,7 +54,8 @@ import requests
 # Config
 # ------------------------------------------------------------------
 
-DATA_DIR       = Path("/ncats/users/liky/social_media_data")
+DATA_DIR       = Path(os.environ.get(
+    "SM_DATA_DIR", str(Path(__file__).resolve().parent.parent / "social_media_data")))
 DISEASES_CSV   = DATA_DIR / "all_diseases.csv"
 PROGRESS_FILE  = DATA_DIR / "disease_ranking_progress.jsonl"
 OUT_CSV        = DATA_DIR / "disease_subreddit_ranking.csv"

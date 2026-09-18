@@ -20,6 +20,7 @@ pattern used for the ranking script) rather than in an interactive shell.
 Usage: python scrape_rare_disease_subreddits.py
 """
 
+import os
 import re
 import requests
 import json
@@ -104,8 +105,10 @@ def clean_text(text: str) -> str:
 
 
 BASE_URL = "https://arctic-shift.photon-reddit.com"
-OUT_DIR  = Path("/ncats/users/liky/social_media_data/scraped_docs")
-OUT_DIR.mkdir(exist_ok=True)
+DATA_DIR = Path(os.environ.get(
+    "SM_DATA_DIR", str(Path(__file__).resolve().parent.parent / "social_media_data")))
+OUT_DIR  = DATA_DIR / "scraped_docs"
+OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 EARLIEST_DATE = "2005-01-01"  # before Reddit existed -- fetches full history
 
