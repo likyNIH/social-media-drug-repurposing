@@ -10,16 +10,29 @@ extraction. Methodology adapted from:
 
 ## Data
 
-This repository is **code only**. The scraped Reddit data, LLM extraction
-outputs, and topic models are not included: some individual files exceed
-GitHub's size limits, and the underlying data (patient posts, verbatim
-quotes, comments) is not appropriate to redistribute in bulk. Every script
-below reads from and writes to `scraped_docs/`, which you regenerate
-locally by running the pipeline in order.
+The raw scraped Reddit data (individual posts/comments, verbatim patient
+quotes) and the full per-community LLM extraction outputs are **not**
+included: some files exceed GitHub's size limits, and that underlying data
+is not appropriate to redistribute in bulk. Every script below reads from
+and writes to `scraped_docs/`, which you regenerate locally by running the
+pipeline in order.
 
-Two small, non-sensitive reference tables (openFDA-derived approved-drug
-lookups, no patient data) are included under `reference_data/` for anyone
-re-running the correction steps (5b/5c below).
+The `data/` folder contains only aggregate, non-quote-level outputs safe to
+share:
+
+- `all_diseases.csv` — the full GARD rare disease reference list
+  (gardId/gardName/synonyms), public NCATS data, no patient content.
+- `sm_term_summary.md`, `sm_term_summary_test_219posts.md` — term-frequency
+  summaries (category, term group, record/mention counts, and short
+  matched surface forms like `SSc | systemic sclerosis`) for the
+  scleroderma community, at two different scrape sizes. No verbatim posts.
+- `topic_summary_full.md` — Top2Vec topic word clusters (top keywords per
+  topic) across all scraped communities. Aggregate word lists only, no
+  verbatim posts.
+
+Note: `disease_approved_drugs.csv`, the openFDA-derived approved-drug
+lookup table used by `apply_disease_reference.py` (step 5c below), is
+maintained outside this repo and is not currently checked in here.
 
 ## Pipeline
 
@@ -65,9 +78,9 @@ re-running the correction steps (5b/5c below).
      manually curated approved-indication lookup for each disease's
      top drugs by mention volume, applied back onto the master table.
    - **5c.** `apply_disease_reference.py` — a second, disease-first pass
-     using `reference_data/disease_approved_drugs.csv` (built from
-     openFDA `indications_and_usage` text), applied on top of pass 5b's
-     output (`drug_signals_master_reclassified.csv`).
+     using `disease_approved_drugs.csv` (built from openFDA
+     `indications_and_usage` text; see note in Data above), applied on
+     top of pass 5b's output (`drug_signals_master_reclassified.csv`).
 
 9. **Repurposing candidates** — `rebuild_repurposing_candidates.py`
    Ranks drug repurposing candidates from the fully corrected data.
