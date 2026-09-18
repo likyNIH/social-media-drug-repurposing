@@ -29,10 +29,12 @@ Outputs, per community:
 
 import csv
 import json
+import sys
 from pathlib import Path
 
 from vllm import LLM, SamplingParams
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraping"))
 import scrape_rare_disease_subreddits as scraper
 from drug_repurposing_prompt import create_drug_repurposing_prompt
 

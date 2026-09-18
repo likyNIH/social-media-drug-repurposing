@@ -28,10 +28,12 @@ Outputs, per community:
 """
 
 import json
+import sys
 from pathlib import Path
 
 from vllm import LLM, SamplingParams
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraping"))
 import scrape_rare_disease_subreddits as scraper
 from topic_labeling_prompt import create_topic_labeling_prompt
 

@@ -19,8 +19,10 @@ Usage: python reclassify_final.py
 
 import csv
 import json
+import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraping"))
 import rank_disease_subreddits as m
 
 DATA_DIR            = Path("/ncats/users/liky/social_media_data")

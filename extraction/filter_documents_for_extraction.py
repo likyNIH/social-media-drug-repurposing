@@ -24,8 +24,10 @@ Usage: python filter_documents_for_extraction.py
 """
 
 import json
+import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraping"))
 import scrape_rare_disease_subreddits as scraper
 
 TOPIC_DIR = scraper.OUT_DIR / "topic_models"

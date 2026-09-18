@@ -35,6 +35,7 @@ Usage: python build_topic_models.py
 import json
 import csv
 import math
+import sys
 from pathlib import Path
 
 import matplotlib
@@ -43,6 +44,7 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 from top2vec import Top2Vec
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraping"))
 import scrape_rare_disease_subreddits as scraper
 
 DATA_DIR = scraper.OUT_DIR  # scraped_docs/

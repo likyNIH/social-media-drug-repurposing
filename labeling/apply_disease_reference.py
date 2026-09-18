@@ -34,8 +34,11 @@ Usage: python apply_disease_reference.py
 """
 
 import csv
+import sys
 from collections import Counter, defaultdict
+from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scraping"))
 import scrape_rare_disease_subreddits as scraper
 
 DRUG_SIGNALS_DIR = scraper.OUT_DIR / "drug_signals"
