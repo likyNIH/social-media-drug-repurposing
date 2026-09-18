@@ -1,6 +1,6 @@
-# Scleroderma Drug Repurposing Term Summary (v2 -- full-history dataset)
+# Scleroderma Drug Repurposing Term Summary (full-history dataset)
 
-Recreated using the same category/term-group structure as the original summary, applied to `scraped_docs/scleroderma_raw.jsonl` (4,598 documents) instead of the original 219-post test scrape. Example surface forms below were rediscovered from this dataset, not copied from the original.
+Uses the same category/term-group structure as `sm_term_summary_test_219posts.md`, applied to `scraped_docs/scleroderma_raw.jsonl` (4,598 documents) instead of the original 219-post test scrape. Example surface forms below were rediscovered from this dataset, not copied from the test-scrape summary.
 
 ## Top Categories
 

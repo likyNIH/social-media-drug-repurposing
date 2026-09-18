@@ -36,9 +36,9 @@ Strategy per disease:
 Resumable: progress is appended to a JSONL file after each disease so the
 script can be interrupted and restarted without repeating work.
 
-Outputs:
-  /ncats/users/liky/social_media_data/disease_ranking_progress.jsonl  (intermediate, one line per disease)
-  /ncats/users/liky/social_media_data/disease_subreddit_ranking.csv   (final ranked list, diseases with subs only)
+Outputs (under $SM_DATA_DIR, default ./social_media_data):
+  disease_ranking_progress.jsonl  (intermediate, one line per disease)
+  disease_subreddit_ranking.csv   (final ranked list, diseases with subs only)
 """
 
 import csv
