@@ -2,7 +2,8 @@
 
 Identifies drug repurposing signals in rare disease patient communities on
 Reddit by combining topic modeling (Top2Vec) with LLM-based structured
-extraction. Methodology adapted from:
+extraction (Gemma3-27B) across 20 rare disease subreddits. Methodology
+adapted from:
 
 > Karas, Qu, Xu & Zhu (2022). "Experiments with LDA and Top2Vec for embedded
 > topic discovery on social media data: A case study of cystic fibrosis."
